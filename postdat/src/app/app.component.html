@@ -1,0 +1,21 @@
+<body>
+Name:
+  <input type="text" [(ngModel)]="Name" placeholder="Name"/><br>
+Email:
+  <input type="Email" [(ngModel)]="Email" placeholder="Email"/><br>
+Password:
+  <input type="Password" [(ngModel)]="Password" placeholder="Password"/><br>
+Gender:<br>
+
+  Male
+  
+  
+   <input type="radio" name="Gender" [(ngModel)]="Gender"  value="Male" id="Male" ><br>
+   
+  Female
+   
+ 
+  <input  type="radio" name="Gender" [(ngModel)]="Gender" id="Female" value="Female">
+  <br><button (click)='post()'>submit</button>
+  
+<router-outlet></router-outlet>

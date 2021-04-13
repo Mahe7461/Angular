@@ -1,0 +1,28 @@
+<p>login-comp works!</p>
+<!--<mat-card>
+    <mat-card-content>
+        <div class='header'>
+            <h2>login</h2>
+        </div>
+        <form (ngSubmit)='onlogin()' name='loginForm' [formGroup]='loginForm'>
+            <div class='email-input'>
+                <mat-form-field class='full-width' appearance='outline'>
+                    <mat-label>Email</mat-label>
+                    <input fromControlName='email' matInput required/>
+                    <mat-error *ngIf="loginForm.get('email').error?.required">
+                </mat-form-field>
+            </div>
+            </form >
+    </mat-card-content>
+</mat-card>--> 
+<form >
+    <div class='container '>
+         
+            <input matInput placeholder='Email' fromControlName='email'>
+         
+        
+            <input matInput placeholder='Password' type='password' fromControlName='password'>
+       
+        <button mat-flat-button color="primary"type='submit'>login</button>
+    </div>
+</form>

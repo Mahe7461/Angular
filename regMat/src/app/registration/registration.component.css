@@ -1,0 +1,23 @@
+.content {
+	color: grey;
+	display: flex;
+	
+	padding: 0 16px;
+	max-width: 960px;
+	flex-direction: column;
+	
+}
+
+.card-container {
+	display: flex;
+	flex-wrap: wrap;
+		margin-top: 16px;
+}
+.cl{
+	color: grey;
+	display: flex;
+	
+	padding: 0 16px;
+	max-width: 960px;
+	flex-direction: column;
+}
