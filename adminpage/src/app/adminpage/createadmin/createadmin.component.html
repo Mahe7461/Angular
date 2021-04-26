@@ -1,0 +1,25 @@
+<p>createadmin works!</p>
+ <mat-card-content>  
+
+    <mat-form-field class="input-field" >
+    
+      <input matInput placeholder="username" type='text'id='username'name='username'[(ngModel)]='username' required>
+    
+  </mat-form-field>
+  <br>
+  <mat-card-content>
+  
+    <mat-form-field class="input-field" >
+    
+      <input matInput placeholder="Email" type='text' id='email' name='email' [(ngModel)]='email' required>
+     
+  </mat-form-field><br>
+   <mat-form-field class="input-field" >
+    
+      <input matInput placeholder="Password" type='password' id='password' name='password' [(ngModel)]='password' required>
+     
+  </mat-form-field>
+
+  <br>
+   <button type="submit" mat-stroked-button color="accent"  (click)='create()' class="btn-block">submit</button>
+  <button type="submit" mat-stroked-button color="accent"  (click)='back()' class="btn-block">back</button>

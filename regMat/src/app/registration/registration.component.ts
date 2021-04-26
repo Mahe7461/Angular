@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators, FormGroup} from '@angular/forms';
+import {FormBuilder, Validators, FormGroup, FormControl} from '@angular/forms';
 import {ValidatePassword} from './validate-password';
 import {FormErrorMessages, formErrorMessages} from '../form-errors-constant';
 import { SharedService } from '../shared.service';
-import * as Crypto from 'crypto-js'
-
+import * as Crypto from 'crypto-js';
+import * as bcrypt from 'bcryptjs';
 export interface Gender {
   value: string;
   viewValue: string;
@@ -31,8 +31,8 @@ export class RegistrationComponent implements OnInit {
   }
   
   convert(){
-    
-    this.covEncOutput= Crypto.AES.encrypt(this.pass.trim()).toString();
+      
+    this.covEncOutput= Crypto.AES.encrypt(this.registrationForm.value.password.trim()).toString();
     console.log(this.covEncOutput)
   }
   pass:string='mahendra'  
@@ -102,7 +102,18 @@ export class RegistrationComponent implements OnInit {
     this.formValid = true;
     console.log(this.registrationForm.value);
   }
+  passw:string='';
+  
   Register(){
+    
+   /* bcrypt.hash(this.registrationForm.value.Password, function(err, hash) {
+      // Store hash in your password DB.
+      console.log(hash)
+  });
+    /*const passdata=this.registrationForm.value.Password;
+    const salt= bcrypt.genSaltSync(10);
+    this.passw= bcrypt.hashSync(passdata,salt);
+    console.log(this.passw,this)*/
   
     var val = {EmployeeId:this.registrationForm.value.EmployeeId,
                FirstName:this.registrationForm.value.FirstName,
@@ -112,20 +123,29 @@ export class RegistrationComponent implements OnInit {
               ContactNumber:this.registrationForm.value.ContactNumber,
               Department:this.registrationForm.value.Department,
               Password:this.registrationForm.value.password,
-              KnownLanguage:[this.sellang,this.registrationForm.value.KnownLanguage],
+              KnownLanguage:[this.languages.value,this.MoreLang],
               State:this.State,
               Country:this.selectedCountry,
               City:this.city,
+              
      
     };
     
+    console.log(this.languages.value)
+    console.log(val)
+    console.log(this.MoreLang)
    this.service.addEmployee(val).subscribe(data=>{
      alert(data.toString());
      
    });
-   console.log(val)
+   
+   console.log(
+    {queryParams:{data:btoa(JSON.stringify(val))}
+
+   })
    
  }
+
 test(){
   console.log(this.covEncOutput)
   
@@ -135,13 +155,24 @@ test(){
     const target = e.target as HTMLInputElement;
     this.registrationForm.get('gender').setValue(target.value, {onlySelf: true});
   }
-  sellang:any=[];
-  lang:any=[
+  sellang:any='';
+  selectall:boolean;
+  languages=new FormControl();
+  lang:string[]=[
     'Tamil','Telugu','Hindi','English'
   ];
+  MoreLang:string[]=[];
   langdata=this.sellang;
- selectlang(Event:any): void{
-  this.sellang= Event.target.value;
+ selectlang() {
+   console.log('call',[this.selectall,this.languages])
+  if (this.selectall==false){
+    this.languages=new FormControl();
+    return;
+  }
+  else if(this.selectall===true){
+    this.languages=new FormControl();
+    this.languages.setValue(this.lang);
+  }
   
   
  }

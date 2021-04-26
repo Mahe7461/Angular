@@ -142,23 +142,25 @@
 			<option *ngFor="let city of citis" [value]='city' >{{city}}</option>
 		</select>
    </form>-->
+   
   
- <div class='cl' >
- KnownLanguage:
-  <div *ngFor='let lan of lang'>
-    <form [formGroup]='registrationForm'>
-          <input type='checkbox' value='{{lan}}' formControlName="KnownLanguage"  (change)='selectlang($event)'>
-            <i>{{lan}}</i>
-    </form>
-  </div>
+  <mat-form-field>
+    <mat-select [formControl]='languages' placeholder='KnownLanguage' multiple>
+      <mat-option *ngFor='let l of lang' [value]='l'>{{l}}
+      </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
     <mat-checkbox #showMore >MoreLanguage</mat-checkbox>
+      
       <div *ngIf='showMore.checked'>
   
-          <input matInput placeholder="KnownLanguage" formControlName="KnownLanguage" required>
+          <input matInput placeholder="KnownLanguage" [(ngModel)]="MoreLang" required>
       
       </div><br>
+     
     
-  </div>
+  
   
 
 

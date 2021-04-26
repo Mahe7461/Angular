@@ -1,0 +1,30 @@
+<p>adminpage works!</p>
+<h1>Welcome to admin page</h1> 
+   
+   
+   
+   
+   
+   
+   
+   <mat-card-content>  
+
+    <mat-form-field class="input-field" >
+    
+      <input matInput placeholder="username" type='text'id='username'name='username'[(ngModel)]='username' required>
+    
+  </mat-form-field>
+  <br>
+  <mat-card-content>
+  
+    <mat-form-field class="input-field" >
+    
+      <input matInput placeholder="Password" type='password' id='password' name='password' [(ngModel)]='password' required>
+     
+  </mat-form-field>
+  <br>
+   <button type="submit" mat-stroked-button color="accent"  (click)='login()' class="btn-block">Login</button>
+  
+  <div class='error'>
+    <h1 *ngIf='invaildform'> invaild user</h1>
+  </div>

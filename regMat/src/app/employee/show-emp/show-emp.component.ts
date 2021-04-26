@@ -71,7 +71,7 @@ export class ShowEmpComponent implements OnInit {
       
     });
   }
-  FilterFn(){
+  FilterFn(){ 
     var EmployeeIdFilter = this.EmployeeIdFilter;
     var FirstNameFilter = this.FirstNameFilter;
 
