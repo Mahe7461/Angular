@@ -6,11 +6,14 @@ import {CreateadminComponent} from 'src/app/adminpage/createadmin/createadmin.co
 import { StoreFirstGuard } from './storeFirst.guard';
 import { RouteguardGuard } from './routeguard.guard';
 import { CreateguardGuard} from './createguard.guard';
+import {HomeComponent} from './home/home.component';
+import {UserComponent} from './user/user.component';
 const routes: Routes = [
   {path:'adminpage', component:AdminpageComponent},
   {path:'admin', component:AdminComponent, canActivate:[RouteguardGuard]},
   {path:'createadmin', component: CreateadminComponent, canActivate:[CreateguardGuard]},
-  {path:'**', component:AdminpageComponent},
+  {path:'', component:HomeComponent},
+  {path:'user', component:UserComponent},
 ];
 
 @NgModule({   

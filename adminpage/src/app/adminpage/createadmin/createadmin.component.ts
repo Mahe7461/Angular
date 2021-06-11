@@ -8,6 +8,7 @@ import { SharedService } from 'src/app/shared.service';
   styleUrls: ['./createadmin.component.css']
 })
 export class CreateadminComponent implements OnInit {
+  title='createadmin'
   username='';
   password='';
   email='';

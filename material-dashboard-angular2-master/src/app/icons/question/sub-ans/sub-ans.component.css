@@ -1,0 +1,16 @@
+.center{
+    margin-right: 10%;
+    margin-left:10%;
+    color: blueviolet;
+  }
+  .card{
+    width: 15%;
+    display: inline block;
+    display: flex;
+ 
+
+  }
+  .input{
+    padding: 6%;
+   background-color: aliceblue;
+ }  

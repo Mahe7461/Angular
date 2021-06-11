@@ -1,0 +1,54 @@
+.fullclick li {
+    list-style: none;
+    
+    margin-right: 90%;
+    background: paleturquoise;
+    position: relative;
+  }
+  
+  .fullclick a.main {
+    color:gray;
+    text-align: right;
+    display: block;
+    z-index: 1;
+  }
+  h1{
+      color: black;
+      align-content: center;
+  }
+  h2{
+    color :black;
+  }
+  h5{
+    color: black;
+    text-size-adjust: 10%;
+  }
+  .fullclick li a.main::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: ' ';
+  }
+  .row1{
+    background:gray;
+    position: relative;
+    
+  }
+  .input{
+     padding: 6%;
+    background-color: aliceblue;
+  }
+  .center{
+    margin-right: 10%;
+    margin-left:10%;
+    color: blueviolet;
+  }
+  .card{
+    width: 15%;
+    display: inline block;
+    display: flex;
+ 
+
+  }

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  title='admin'
   create:boolean=false
   name=localStorage.getItem('username')
   constructor(private route: Router) { }

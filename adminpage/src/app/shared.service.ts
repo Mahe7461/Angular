@@ -41,7 +41,10 @@ readonly APIUrl = "http://127.0.0.1:8000";
   adminlogin(logindata:any):Observable<ApiResponse>{
     return this.http.post<ApiResponse>(this.APIUrl +'/AdminAngular/api/login/', logindata).pipe(
       retry(1), catchError(this.handleError)
+     
+     
     );
+    
     
   }
   handleError(error:any){
@@ -52,7 +55,7 @@ readonly APIUrl = "http://127.0.0.1:8000";
       errorMess=`Error code: ${error.status}\nMessage:${error.message}`;
 
     }
-    window.alert(errorMess);
+    window.localStorage.setItem('error',error.status);
     return throwError(errorMess);
     }
  
@@ -105,4 +108,4 @@ readonly APIUrl = "http://127.0.0.1:8000";
     );
   }*/
   
-}
+} 

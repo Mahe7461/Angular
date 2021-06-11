@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import {SharedService} from 'src/app/shared.service';
-
+import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-add-edit-emp',
   templateUrl: './add-edit-emp.component.html',
@@ -8,7 +8,7 @@ import {SharedService} from 'src/app/shared.service';
 })
 export class AddEditEmpComponent implements OnInit {
 
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService,private Toastrser:ToastrService) { }
   Employeelist:any=[];
 
   
@@ -60,9 +60,10 @@ export class AddEditEmpComponent implements OnInit {
       Gender:this.Gender,
       KnownLanguage: this.KnownLanguage,};
       this.service.addEmployee(val).subscribe(data=>{
-      alert(data.toString());
+      //alert(data.toString());
       
     });
+    this.toastsu()
     console.log(val)
     this.closeClick();
   }
@@ -82,13 +83,29 @@ export class AddEditEmpComponent implements OnInit {
     Department:this.department,
     ContactNumber:this.ContactNumber,};
     this.service.updateEmployee(val).subscribe(res=>{
-    alert(res.toString());
-    });
+   // alert(res.toString()
+    
+   // );
+    console.log(res.toString()) 
+    this.toastsuccess()
+  });
     this.closeClick();
   }
   closeClick(){
     this.ActivateAddEditEmpComp=false;
     this.refreshEmpList();
+  }
+  toastsuccess(){
+    this.Toastrser.success('updated successfully', 'Success');
+  }
+  toastsu(){
+    this.Toastrser.success('Registered successfully', 'Success');
+  }
+  toasterror(){
+    this.Toastrser.error('Invaild username or password', 'Error');
+  }
+  toastinfo(){
+    this.Toastrser.info('Your are not allowed', 'Info');
   }
 
 

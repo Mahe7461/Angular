@@ -1,68 +1,69 @@
+
 <div class="d-flex flex-row bd-highlight mb-3">
 
-<div class="form-froup row" style="width: 60%;">
+<div class="form-froup row" style="width: 75%;">
     <label class="col-sm-2 col-form-label">EmployeeId</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="EmployeeId"
+        <input  matInput type="text" class="form-control" [(ngModel)]="EmployeeId"
         placeholder="Enter EmployeeId">
     </div>
 
     <label class="col-sm-2 col-form-label">FirstName</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="FirstName"
+        <input  matInput type="text" class="form-control" [(ngModel)]="FirstName"
         placeholder="Enter FirstName">
     </div>  
     <label class="col-sm-2 col-form-label">LastName</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="LastName"
+        <input matInput type="text" class="form-control" [(ngModel)]="LastName"
         placeholder="Enter LastName">
     </div>
     <label class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="Email"
+        <input  matInput type="text" class="form-control" [(ngModel)]="Email"
         placeholder="Enter Email">
     </div>
-    <label class="col-sm-2 col-form-label">DOB</label>
+    <label matInput class="col-sm-2 col-form-label">DOB</label>
     <div class="col-sm-10">
-        <input type="date" class="form-control" [(ngModel)]="DOB"
+        <input matInput type="date" class="form-control" [(ngModel)]="DOB"
         placeholder="Enter DOB">
     </div>
     <label class="col-sm-2 col-form-label">ContantNumber</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="ContactNumber"
+        <input matInput type="text" class="form-control" [(ngModel)]="ContactNumber"
         placeholder="Enter ContactNumber">
     </div>
     <label class="col-sm-2 col-form-label">Country</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="Country"
+        <input matInput type="text" class="form-control" [(ngModel)]="Country"
         placeholder="Enter Country">
     </div>
     <label class="col-sm-2 col-form-label">State</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="State"
+        <input matInput type="text" class="form-control" [(ngModel)]="State"
         placeholder="Enter State">
     </div>
     <label class="col-sm-2 col-form-label">City</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="City"
+        <input matInput type="text" class="form-control" [(ngModel)]="City"
         placeholder="Enter City">
     </div>
     <label class="col-sm-2 col-form-label">KnownLanguage</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="KnownLanguage"
+        <input  matInput type="text" class="form-control" [(ngModel)]="KnownLanguage"
         placeholder="Enter KnownLanguage">
     </div>
     <label class="col-sm-2 col-form-label">password</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="Password"
+        <input matInput type="text" class="form-control" [(ngModel)]="Password"
         placeholder="Enter the Password">
     </div>
-    <<label class="col-sm-2 col-form-label">Gender</label>
+    <label class="col-sm-2 col-form-label">Gender</label>
     <div class="col-sm-10">
          
-      <select class="form-control" [(ngModel)]="Gender">
-           <option>--Select--</option>
-           <option value=Male>Male</option>
+      <select class="form-control" placeholder='Male' [(ngModel)]="Gender">
+           
+           <option  value=Male>Male</option>
            <option value=Female>Female</option>
            
        </select>
@@ -72,7 +73,7 @@
     <div class="col-sm-10">
          
       <select class="form-control" [(ngModel)]="department">
-           <option>--Select--</option>
+           
            <option value=Python>Python</option>
            <option value=HR>HR</option>
            <option value=Angular>Angular</option>
