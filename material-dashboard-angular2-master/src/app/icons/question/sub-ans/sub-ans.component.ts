@@ -63,7 +63,7 @@ export class SubAnsComponent implements OnInit {
   delete(data){
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Confirm Remove Employee',
+        title: 'Confirm ',
         message: 'Are you sure, You want to delete? ' 
       }
     });
@@ -77,9 +77,7 @@ export class SubAnsComponent implements OnInit {
 
           
         })
-        if(this.cardData.length===0){
-          this.convalue2=false
-        }
+        
       }
     });
     
@@ -127,6 +125,7 @@ export class SubAnsComponent implements OnInit {
         
       }
     });
+    this.refreshSubCatList();
     
   }
 
@@ -164,7 +163,6 @@ export class SubAnsComponent implements OnInit {
     
     
     
-    
 
 
     
@@ -173,25 +171,21 @@ export class SubAnsComponent implements OnInit {
   
   addSubCat(){
     for(let i= 0; i< this.cardData.length; i++){
-      var val = {SubCatId: this.SubCatId,
+      var val = { SubCatId: this.SubCatId,
       
-                SubCategory:this.Inputanswer,
-                Question:this.questionData,
-                 Answer:this.answerdata,
-                };
-          
-    this.service.addsubcat(val).subscribe(res=>{
+        SubCategory:this.cardData[i],
+        Question:this.questionData,
+                  Answer:this.answerdata};
+        this.service.addsubcat(val).subscribe(res=>{
       
-      this.showSuccess(res);
-      this.refreshSubCatList();
-      
-    });
-  }
-   
-   
-    this.convalue2=true
-    
-  }
+         this.showSuccess(res);
+                    
+                    
+         });
+        this.refreshSubCatList();
+                }
+                this.convalue2=true
+            }
 
   updateSubCat(){
     var val = {SubCatId: this.SubCatId,
@@ -208,10 +202,12 @@ export class SubAnsComponent implements OnInit {
   } 
 
   refreshSubCatList(){
+    
     this.service.getsubCat().subscribe(values=>{
       
     this.quesAns=values.filter(item=> item.Question == this.questionData && item.Answer===this.answerdata );
-      if(this.quesAns.length===0){
+      console.log(this.quesAns)
+    if(this.quesAns.length===0){
         this.empty=true
       }
       
@@ -226,8 +222,8 @@ export class SubAnsComponent implements OnInit {
       //this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
       //this.router.navigate(['subCat']);
 //  }); 
-      let currentUrl = this.router.url;
-      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+       let currentUrl = this.router.url;
+       this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
        this.router.navigate([currentUrl]);
       });
 

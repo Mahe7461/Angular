@@ -87,7 +87,7 @@ answerdata="";
         
       }
     });
-    
+    this.refreshLinkList();
     
     
   }

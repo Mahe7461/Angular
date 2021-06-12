@@ -52,6 +52,9 @@ export class QuAnsComponent implements OnInit{
    showWarning(data){
      this.toastr.warning(data)
    }
+   showerror(data){
+    this.toastr.error(data)
+  }
   cardAdddata(){
     let data = this.quesAns.find(obj=>obj.Answer ===this.answer)
     if(!data){
@@ -66,30 +69,21 @@ export class QuAnsComponent implements OnInit{
   delete(data){
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Confirm Remove Employee',
+        title: 'Confirm ',
         message: 'Are you sure, You want to delete? ' 
       }
     });
     confirmDialog.afterClosed().subscribe(result => {
       if (result === true) {
-        this.cardData.forEach((element,index)=>{
-          if(element===data){
-            this.cardData.splice(index,1);
-            this.showSuccess('Deleted Successfully');
-          }
-
-          
-        })
+        this.cardData = this.cardData.filter(item => item !== data);
+        
+        this.showSuccess('Deleted Sucessfully');
         if(this.cardData.length===0){
           this.saveCon=false
         }
       }
     });
-    
-   
-    if(this.cardData.length===0){
-      this.saveCon=false
-    }
+
   }
   addClick(){
     this.data={
@@ -118,7 +112,7 @@ export class QuAnsComponent implements OnInit{
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
         title: 'Confirm ',
-        message: 'Are you sure, You want to delete? ' 
+         message: 'Are you sure, You want to delete? ' 
       }
     });
     confirmDialog.afterClosed().subscribe(result => {
@@ -126,15 +120,18 @@ export class QuAnsComponent implements OnInit{
         this.service.deleteAnswer(item.AnswerId).subscribe(data=>{
           
           
-          
+          console.log(data)
           this.showSuccess(data);
+          this.refreshAnsList();
         });
-        this.refreshAnsList();
+          this.refreshAnsList();
         
          
         
       }
+
     });
+    this.refreshAnsList();    
     
     
   }
@@ -148,20 +145,20 @@ export class QuAnsComponent implements OnInit{
   saveCondition(){
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Confirm Remove Employee',
+        title: 'Confirm ',
         message: 'Are you sure, You want to save? ' 
       }
     });
     confirmDialog.afterClosed().subscribe(result => {
       if (result === true) {
         this.saveCon=false
-      this.answerList=[this.answer]
-      this.addAnswerMethod()
+        this.answerList=[this.answer]
+        this.addAnswerMethod()
       
       
-      this.cardData=[]
-      this.refreshAnsList();
-      this.refreshPage()
+        this.cardData=[]
+        this.refreshAnsList();
+        this.refreshPage()
       
       }
     });
@@ -229,22 +226,7 @@ let currentUrl = this.router.url;
     });
 }
 
-removeEmployee(employeeObj) {
-  const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
-    data: {
-      title: 'Confirm Remove Employee',
-      message: 'Are you sure, You want to delete? ' 
-    }
-  });
-  confirmDialog.afterClosed().subscribe(result => {
-    if (result === true) {
-      this.cardData = this.cardData.filter(item => item !== employeeObj);
-      this.saveCon=false;
-      this.showSuccess('Deleted Sucessfully');
-      
-    }
-  });
-}
+
 passAnswer(item){
   localStorage.setItem('Answer',item)
  }

@@ -46,9 +46,7 @@
                       <div class="table-responsive">
                           <table class="table">
                               <thead class=" text-primary">
-                                  <th>
-                                      ID
-                                  </th>
+                                  
                                   <th>
                                       Link
                                   </th>
@@ -62,9 +60,9 @@
                               <tbody>
                                   
                                   <tr *ngFor="let dataItem of list" >
-                                      <td>{{ $index + 1 | number }}</td>
                                       
-                                      <td><a>{{dataItem.Link}}</a></td>
+                                      
+                                      <td><a href='{{dataItem.Link}}'>{{dataItem.Link}}</a></td>
                 
                                       <td>
                                           <button type="button" class="btn btn-light mr-1"
