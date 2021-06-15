@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { SharedService } from 'app/shared.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -15,6 +16,7 @@ export class QuesEditComponent implements OnInit {
 constructor(private service:SharedService,
   private toastr: ToastrService,
     private dialog: MatDialog,
+    private router:Router
     ) { }
 list:any=[];
 
@@ -47,8 +49,9 @@ addEmployee(){
     this.showSuccess(data);
   });
   
-  
+  this.refreshPage(); 
   this.closeClick();
+  
 }
 
 updateEmployee(){
@@ -65,7 +68,9 @@ updateEmployee(){
   
   
 });
+  this.refreshPage();
   this.closeClick();
+  
 }
 closeClick(){
   this.ActivateAddEditEmpComp=false;
@@ -80,5 +85,17 @@ refreshQuesList(){
     
   });
 }
+refreshPage(){
+  // this.document.defaultView.location.reload();
+  //location.reload();
+  //this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+  // this.router.navigate(['/Answers']);
+ //}); 
+ let currentUrl = this.router.url;
+     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+         this.router.navigate([ currentUrl]);
+     });
+ }
+
 
 }

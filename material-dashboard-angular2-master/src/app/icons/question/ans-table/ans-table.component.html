@@ -48,10 +48,10 @@
                               <thead class=" text-primary">
                                   
                                   <th>
-                                      Link
+                                      <b>Link</b>
                                   </th>
                                   <th>
-                                      Options
+                                      <b>Options</b>
                                   </th>
 
                                  
@@ -62,7 +62,7 @@
                                   <tr *ngFor="let dataItem of list" >
                                       
                                       
-                                      <td><a href='{{dataItem.Link}}'>{{dataItem.Link}}</a></td>
+                                      <td><a href="{{dataItem.Link}}" target="_blank">{{dataItem.Link}}</a></td>
                 
                                       <td>
                                           <button type="button" class="btn btn-light mr-1"

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedService } from 'app/shared.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,6 +12,7 @@ export class SubAnsEditComponent implements OnInit {
 
   constructor(private service:SharedService,
     private toastr: ToastrService,
+    private router: Router
     ) { }
   list:any=[];
   
@@ -42,7 +44,7 @@ export class SubAnsEditComponent implements OnInit {
       this.showSuccess(data);
     });
     
-    
+    this.refreshPage();
     this.closeClick();
   }
   
@@ -58,7 +60,9 @@ export class SubAnsEditComponent implements OnInit {
      
     
   });
+    this.refreshPage();
     this.closeClick();
+    
   }
   closeClick(){
     this.ActivateAddEditEmpComp=false;
@@ -73,6 +77,17 @@ export class SubAnsEditComponent implements OnInit {
       
     });
   }
+  refreshPage(){
+    // this.document.defaultView.location.reload();
+    //location.reload();
+    //this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+    // this.router.navigate(['/Answers']);
+   //}); 
+   let currentUrl = this.router.url;
+       this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+           this.router.navigate([ currentUrl]);
+       });
+   }
   
   }
   

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedService } from 'app/shared.service';
 import { ToastrService } from 'ngx-toastr';
 @Component({
@@ -10,6 +11,7 @@ export class AddQuestComponent implements OnInit {
 
   constructor(private service:SharedService,
     private toastr: ToastrService,
+    private router:Router,
     ) { }
 list:any=[];
 
@@ -42,7 +44,9 @@ addEmployee(){
   });
   
   console.log(val)
+  this.refreshPage();
   this.closeClick();
+ 
 }
 
 updateEmployee(){
@@ -57,6 +61,7 @@ updateEmployee(){
   console.log(res.toString()) 
   
 });
+  this.refreshPage();
   this.closeClick();
 }
 closeClick(){
@@ -73,6 +78,17 @@ refreshEmpList(){
   });
 }
 
+refreshPage(){
+  // this.document.defaultView.location.reload();
+  //location.reload();
+  //this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+  // this.router.navigate(['/Answers']);
+ //}); 
+ let currentUrl = this.router.url;
+     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+         this.router.navigate([ currentUrl]);
+     });
+ }
 
 
 }

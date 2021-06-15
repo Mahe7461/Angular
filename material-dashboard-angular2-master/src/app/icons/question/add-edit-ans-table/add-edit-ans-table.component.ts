@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {SharedService} from 'app/shared.service'
 import { ToastrService } from 'ngx-toastr';
 
@@ -12,7 +13,9 @@ export class AddEditAnsTableComponent implements OnInit {
   
   
   constructor(private service:SharedService,
-    private toastr: ToastrService,) { }
+    private toastr: ToastrService,
+    private router:Router,
+    ) { }
   list:any=[];
 
   
@@ -52,7 +55,9 @@ export class AddEditAnsTableComponent implements OnInit {
     });
     
     console.log(val)
+    this.refreshPage();
     this.closeClick();
+    
   }
 
   update(){
@@ -66,6 +71,7 @@ export class AddEditAnsTableComponent implements OnInit {
     console.log(res.toString()) 
     this.showSuccess(res);
   });
+    this.refreshPage();
     this.closeClick();
   }
   closeClick(){
@@ -82,6 +88,18 @@ export class AddEditAnsTableComponent implements OnInit {
     });
   }
 
+  refreshPage(){
+    // this.document.defaultView.location.reload();
+    //location.reload();
+    //this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+    // this.router.navigate(['/Answers']);
+   //}); 
+   let currentUrl = this.router.url;
+       this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+           this.router.navigate([ currentUrl]);
+       });
+   }
+  
 }
 
 

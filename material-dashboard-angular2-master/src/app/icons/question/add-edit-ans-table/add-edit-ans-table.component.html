@@ -13,11 +13,15 @@
 
 
 
-<button (click)="add()" *ngIf="data.LinkId==0" class="btn btn-primary">
+<button type="button" class="close" 
+              data-dismiss="modal" aria-label="Close"
+(click)="add()" *ngIf="data.LinkId==0" class="btn btn-primary">
     Add
 </button>
 
-<button (click)="update()" *ngIf="data.LinkId!=0" class="btn btn-primary">
+<button type="button" class="close" 
+              data-dismiss="modal" aria-label="Close"
+(click)="update()" *ngIf="data.LinkId!=0" class="btn btn-primary">
     Update
 </button>
 

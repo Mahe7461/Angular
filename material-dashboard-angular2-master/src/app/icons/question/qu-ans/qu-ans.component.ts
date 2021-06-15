@@ -108,7 +108,7 @@ export class QuAnsComponent implements OnInit{
     
   
   deleteClick(item){
-    debugger;
+    
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
         title: 'Confirm ',
